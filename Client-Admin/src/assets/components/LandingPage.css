@@ -1,0 +1,14 @@
+/* LandingPage.css */
+#background-image {
+  background-image: url('https://images.yourstory.com/cs/wordpress/2013/08/coursehub.jpg');
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Optional: Make the background image fixed */
+  height: 100vh; /* Set the height to the viewport height for full-screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add more styles as needed */
