@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import Signup from "./assets/components/Signup";
-import Signin from "./assets/components/Signin";
-import Appbar from "./assets/components/Appbar";
-import Addcourse from "./assets/components/Addcourse";
-import Courses from "./assets/components/Courses";
-import Course from "./assets/components/Course";
-import Landing from "./assets/components/Landing";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
+import Appbar from "./components/Appbar";
+import Addcourse from "./components/Addcourse";
+import Courses from "./components/Courses";
+import Course from "./components/Course";
+import Landing from "./components/Landing";
 import { RecoilRoot, useSetRecoilState } from "recoil";
 import { userState } from "./store/atoms/user";
-import "./assets/components/LandingPage.css";
+import "./components/LandingPage.css";
 
 
 function App() {

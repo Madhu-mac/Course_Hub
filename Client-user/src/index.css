@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  background-color: lightsteelblue;
+    overflow: hidden;
 }
 .appbar {
   display: flex;
@@ -50,10 +51,10 @@ body {
   display: flex;
   gap: 35px;
   margin-top: 20px;
-  margin-left: 400px;
-  margin-right: 300px;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  width: auto;
 }
 
 .message {
@@ -61,4 +62,58 @@ body {
   font-size: 22px;
   text-align: center;
   color: rgb(218, 18, 18);
+}
+
+.button-btn {
+  margin-right: 15px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px;
+  width: 120px;
+  border-radius: 90px;
+  border: 2px solid #601b99;
+  box-shadow: 0 0 20px #601b99;
+  background-image: linear-gradient(to right, black, #601b99, black);
+}
+
+.button-btn:hover {
+  cursor: pointer;
+  box-shadow: none;
+}
+.button-nav {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px;
+  width: 100px;
+  border-radius: 10px;
+  border: 1px solid #601b99;
+  background-color: black;
+}
+
+.button-nav:hover {
+  cursor: pointer;
+  color:#601b99;
+}
+.logo{
+  font-family: 'Kaushan Script', cursive !important;
+}
+
+
+.landingpic{
+  height: auto;
+  box-shadow: 0 0 50px #601b99;
+  border-radius: 80px;
+}
+.cardstyle { 
+  /* background: rgba(96,27,153, 0.3) !important;  */
+   /* background-color: rgba(255, 255, 255, 0.8) !important;   */
+    /* backdrop-filter: blur(0px);   */
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    min-width: 400px;     
+    box-shadow: 0 0 20px #601b99;
+    border-radius: 20px !important; 
 }

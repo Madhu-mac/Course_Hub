@@ -20,6 +20,8 @@ function RegisterPage() {
 
       const data = res.data;
       localStorage.setItem("token", data.token);
+      localStorage.setItem('email', email);
+      localStorage.setItem('isLoggedIn', true);
 
       // Update Recoil state with the user information
       setUser({
@@ -40,10 +42,11 @@ function RegisterPage() {
     <div>
       <div
         style={{
-          paddingTop: 100,
+          paddingTop: 150,
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
+          color: 'white'
         }}
       >
         <Typography variant="h6">
@@ -51,8 +54,12 @@ function RegisterPage() {
         </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card variant="outlined" sx={{ width: 300, p: 4 }}>
+        <Card 
+        className= "cardstyle" 
+        variant="outlined" 
+       >
           <TextField
+          style={{ color: "white" , borderColor: "white" }}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -63,6 +70,7 @@ function RegisterPage() {
           <br />
           <br />
           <TextField
+          
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -73,18 +81,26 @@ function RegisterPage() {
           />
           <br />
           <br />
-          <Button
-            sx={{
-              bgcolor: "#053B50",
-              ":hover": {
-                bgcolor: "#115469",
-              },
-            }}
+          <button
+            className='button-nav'
             variant={"contained"}
             onClick={handleSignUp}
           >
             Sign up
-          </Button>
+          </button>
+          <br></br><br></br>
+          <div>
+            <h3 style={{ fontWeight: "600" }}>
+             Already a user! login here..
+            </h3>
+            <br />
+            <button
+              className="button-nav"
+              onClick={() => navigate("/login")}
+            >
+              Signin
+            </button>
+            </div>
         </Card>
       </div>
     </div>

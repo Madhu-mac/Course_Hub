@@ -37,15 +37,13 @@ function ShowCourses() {
   return (<div>
     <Typography
           variant="h4"
-          component="div"
           style={{
             padding: "10px",
             borderRadius: "4px",
             fontWeight: "bold",
-            color: "#101460",
+            color: "whitesmoke",
             textAlign: "center",
             marginTop: "70px",
-            marginLeft: "210px",
           }}
         >
           All Courses

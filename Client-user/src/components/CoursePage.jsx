@@ -133,18 +133,12 @@ function Courses() {
 
         <div>
           {!isPurchased ? (
-            <Button
-              style={{
-                backgroundColor: "#bc1c44",
-                padding: "10px 10px",
-                borderRadius: "15%",
-                fontWeight: "700",
-                fontSize: "20px",
-              }}
+            <button className="button-btn"
+              style={{width: "180px"}}
               onClick={handleBuyNow}
             >
               BUY NOW @${course?.price}
-            </Button>
+            </button>
           ) : (
             <div>
               <Button
@@ -178,10 +172,12 @@ function Courses() {
         
       </div>
       <div>
-      <Card
+      <Card 
+      className= "cardstyle" 
+      variant="outlined"
           sx={{ width: "350px" }}
           style={{
-            backgroundColor: " #101460",
+            backgroundColor: "#601b99",
             color: "white",
             borderRadius: "10px",
             paddingRight: "6px",
@@ -191,7 +187,7 @@ function Courses() {
         >
           <CardActionArea>
             <CardContent style={{ textAlign: "center" }}>
-              <Typography gutterBottom variant="h4" component="div">
+              <Typography gutterBottom variant="h4" component="div" back>
                 Course Overview
               </Typography>
               <br />

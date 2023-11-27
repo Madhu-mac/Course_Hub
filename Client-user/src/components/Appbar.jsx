@@ -7,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { userEmailState } from "../store/selectors/userEmailState";
 import Logo from "../../public/Logo.png"
+
+
 export default function Appbar() {
   // const userLoading = useRecoilValue(userLoggedInState)
    const userEmail =useRecoilValue(userEmailState)
@@ -28,56 +30,54 @@ export default function Appbar() {
           justifyContent: "space-between",
           padding: 4,
           zIndex: 1,
+          overflow: "auto",
+          marginTop: "8px"
+          // background: "rgba(255, 255, 255, 0.5)"
         }}
-      >
+      > 
         <div
-          style={{ display:"flex", flexDirection:"row", justifyContent: "center", alignItems:"center", marginLeft: 10, cursor: "pointer" }}
+          style={{ display:"flex", flexDirection:"row", justifyContent: "center", alignItems:"center", marginLeft: 10, cursor: "pointer"  }}
           onClick={() => {
             navigate("/");
           }}
-        ><img src={Logo} alt="logo" 
-        style={{ width: 100, height: 100 }} />
-          <Typography
-            sx={{}}
+        >
+          <Typography 
+             style={{ color: "white" ,fontFamily: 'Kaushan Script'}}
             onClick={() => {
               navigate("/");
             }}
             variant={"h6"}
           >
             CourseHub
-          </Typography>
+          </Typography> 
         </div>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex"  }}>
           <div style={{ marginRight: 10, display: "flex" }}>
             <div style={{ marginRight: 10 }}>
-              <Button
-                sx={{
-                  bgcolor: "#053B50",
-                  ":hover": {
-                    bgcolor: "#115469",
-                  },
-                }}
+              <button
+                className="button-nav"
+                style={{ width: "120px"}}
                 onClick={() => {
                   navigate("/courses");
                 }}
               >
                 All courses
-              </Button>
+              </button>
             </div>
             <div style={{ marginRight: 10 }}>
-              <Button
-                sx={{ bgcolor: "#053B50" }}
+              <button style={{ width: "200px"}}
+                className="button-nav"
                 onClick={() => {
                   navigate("/courses/purchased");
                 }}
               >
                 Purchased Courses
-              </Button>
+              </button>
             </div>
             <div style={{ marginRight: 10 }}>
-              <Button
+              <button
                 variant={"contained"}
-                sx={{ bgcolor: "#053B50" }}
+                 className="button-btn"
                 onClick={() => {
                   localStorage.removeItem("token");
                   localStorage.removeItem("isLoggedIn");
@@ -93,7 +93,7 @@ export default function Appbar() {
               >
                 {" "}
                 Logout
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -110,51 +110,42 @@ export default function Appbar() {
           padding: "10px",
           zIndex: 1,
           overflow: "auto",
+          marginLeft: '20px',
+          marginRight: '20px',
+          marginTop: "8px"
         }}
       >
         <div>
           <Typography
-            sx={{}}
+             style={{ color: "white" ,fontFamily: 'Kaushan Script', cursor:"pointer"}}
             onClick={() => {
               navigate("/");
             }}
-            variant="h6"
+            variant="h5"
           >
             CourseHub
           </Typography>
         </div>
         <div style={{ display: "flex" }}>
           <div style={{ marginRight: 10 }}>
-            <Button
-              variant={"contained"}
-              sx={{
-                bgcolor: "#053B50",
-                ":hover": {
-                  bgcolor: "#115469",
-                },
-              }}
+            <button
+             className="button-nav"
               onClick={() => {
                 navigate("/register");
               }}
             >
               Signup
-            </Button>
+            </button>
           </div>
           <div>
-            <Button
-              variant={"contained"}
-              sx={{
-                bgcolor: "#053B50",
-                ":hover": {
-                  bgcolor: "#115469",
-                },
-              }}
+            <button
+            className="button-nav"
               onClick={() => {
                 navigate("/login");
               }}
             >
               Signin
-            </Button>
+            </button>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { isUserLoading } from "../../store/selectors/isUserLoading";
-import { userEmailState } from "../../store/selectors/userEmail";
+import { isUserLoading } from "../store/selectors/isUserLoading";
+import { userEmailState } from "../store/selectors/userEmail";
 
 function Landing (){
    const navigate = useNavigate()
@@ -29,7 +29,7 @@ function Landing (){
                                 onClick={() => {
                                     navigate("/signup")
                                 }}
-                            >Admin</Button>
+                            >signup</Button>
                         </div>
                         <div>
                             <Button
@@ -41,7 +41,7 @@ function Landing (){
                                 onClick={() => {
                                     navigate("/register")
                                 }}
-                            >User</Button>
+                            >Signin</Button>
                         </div>
                     </div>}
           </div>

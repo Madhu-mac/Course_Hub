@@ -11,14 +11,16 @@ function CourseCard(props) {
   const [isMouseOver, setIsMoueOver] = useState(false);
   return (
     <div>
-      <Card
-        sx={{ maxWidth: 345, height: 400 }}
+      <Card 
+       className= "cardstyle" 
+       variant="outlined" 
+        sx={{ minWidth: 350, height: 360 }}
         style={{
           display: "flex",
           flex: 1,
           flexDirection: "column",
-          fontFamily: "Arial, sans-serif",
-          border: isMouseOver ? "1px solid #bc1c44" : "1px solid lightsteelblue",
+          fontFamily: "Arial, sans-serif",  
+          boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99"
         }}
         onMouseOver={() => setIsMoueOver(true)}
         onMouseLeave={() => setIsMoueOver(false)}
@@ -28,7 +30,7 @@ function CourseCard(props) {
       >
         <div>
           <CardMedia
-            sx={{ height: 200, width: 350 }}
+            sx={{ height: 200, width: 350 , minWidth: "100%" , borderRadius: "20px"}}
             image={props.course.imageLink}
             title={props.course.title}
           />
@@ -45,7 +47,7 @@ function CourseCard(props) {
               component="div"
               style={{
                 fontWeight: "700",
-                color: isMouseOver && "#bc1c44",
+                color: isMouseOver && "#601b99",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 display: "-webkit-box",
@@ -67,6 +69,7 @@ function CourseCard(props) {
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
+                color: isMouseOver && "#601b99",
               }}
             >
               {props.course.description}
@@ -76,7 +79,7 @@ function CourseCard(props) {
               gutterBottom
               variant="h6"
               component="div"
-              style={{ fontWeight: "900" }}
+              style={{ fontWeight: "900",  color: isMouseOver && "#601b99"}}
             >
               ${props.course.price}
             </Typography>

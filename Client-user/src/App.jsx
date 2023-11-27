@@ -8,12 +8,21 @@ import ShowCourses from './components/ShowCourses';
 import Courses from './components/CoursePage';
 import PurchasedCourses from './components/Purchased';
 import Appbar from './components/Appbar';
-
+import backgroundImg from "../public/Background.svg"
 function App() {
   return (
     <RecoilRoot>
       <div 
-        style={{ height: "100vh", width: "100vw", backgroundColor: "#64CCC5" }}
+        style={{
+          backgroundImage: `url(${backgroundImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          width: "100vw",
+          alignItems: "center",
+          backgroundColor: "black",
+          overflow: "hidden"
+        }}
       >
     <Router>
       <Appbar />

@@ -75,12 +75,14 @@ function LoginPage() {
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
+          color: "white"
         }}
       >
         <Typography variant={"h6"}>Welcome to Coursera. Login Below</Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card varint={"outlined"} style={{ width: 400, padding: 20 }}>
+        <Card  className= "cardstyle" 
+        variant="outlined"  >
           <TextField
             onChange={(e) =>
               setUser((prev) => ({ ...prev, email: e.target.value }))
@@ -104,39 +106,33 @@ function LoginPage() {
           <br />
 
           {isLoading ? (
-            <Button
-              style={{ backgroundColor: "#101460" }}
-              className="button"
-              variant="contained"
+            <button
+              className="button-nav"
               onClick={handleLogin}
             >
               <CircularProgress size={25} />
-            </Button>
+            </button>
           ) : (
-            <Button
-              style={{ backgroundColor: "#101460" }}
-              className="button"
-              variant="contained"
+            <button
+            className="button-nav"
               onClick={handleLogin}
             >
               Login
-            </Button>
+            </button>
           )}
 
-          <br></br>
+          <br></br><br></br>
           <div>
-            <h3 style={{ fontWeight: "500" }}>
+            <h3 style={{ fontWeight: "600" }}>
               New here? Click here to register new account.
             </h3>
             <br />
-            <Button
-              style={{ backgroundColor: "#101460" }}
-              className="button"
-              variant="contained"
+            <button
+              className="button-nav"
               onClick={() => navigate("/register")}
             >
               Register
-            </Button>
+            </button>
           </div>
         </Card>
       </div>

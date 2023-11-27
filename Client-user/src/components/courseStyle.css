@@ -18,10 +18,10 @@
 .course-title {
   font-size: 50px;
   font-weight: bold;
-  color: #101460;
+  color: white;
 }
 .course-des {
-  color: #101460;
+  color: white;
   font-weight: bold;
   font-size: 20px;
 }
@@ -48,13 +48,13 @@
   .course-title {
     font-size: 20px;
     font-weight: 900;
-    color: #101460;
+    color: white;
   }
   .text-container {
     margin-left: 30px;
   }
 }
-@media (min-width: 481) and (max-width: 1200) {
+@media (min-width: 481px) and (max-width: 1200px) {
   .all-courses {
     max-width: 400;
     padding-left: 0;
@@ -63,7 +63,7 @@
   .course-title {
     font-size: 30px;
     font-weight: 900;
-    color: #101460;
+    color: white;
   }
 }
 @media (min-width: 1201px) and (max-width: 1700px) {
@@ -78,12 +78,12 @@
   .course-title {
     font-size: 40px;
     font-weight: 900;
-    color: #101460;
+    color: white;
   }
   .des {
     font-size: 20px;
     font-weight: 500;
-    color: #101460;
+    color: white;
     width: 500px;
   }
 }

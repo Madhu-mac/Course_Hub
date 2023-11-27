@@ -4,14 +4,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { courseState } from "../../store/atoms/course";
+import { courseState } from "../store/atoms/course";
 import {
   courseDescription,
   courseImage,
   coursePrice,
   courseTitle,
   isCourseLoading,
-} from "../../store/selectors/course";
+} from "../store/selectors/course";
 import { Loading } from "./Loading";
 
 function Course() {
