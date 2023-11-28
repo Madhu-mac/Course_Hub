@@ -21,52 +21,59 @@ function Appbar() {
   if (userEmail) {
     return (
       <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: 4,
-          zIndex: 1,
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: 4,
+        zIndex: 1,
+        overflow: "auto",
+        marginTop: "8px"
         }}
       >
         <div
-          style={{ marginLeft: 10, cursor: "pointer" }}
+          style={{ display:"flex", flexDirection:"row", justifyContent: "center", alignItems:"center", marginLeft: 10, cursor: "pointer"  }}
           onClick={() => {
             navigate("/");
           }}
         >
-          <Typography variant={"h6"}>CourseHub</Typography>
+          <Typography 
+             style={{ color: "white" ,fontFamily: 'Kaushan Script'}}
+            onClick={() => {
+              navigate("/");
+            }}
+            variant={"h6"}
+          >
+            CourseHub
+          </Typography> 
         </div>
         <div style={{ display: "flex" }}>
           <div style={{ marginRight: 10, display: "flex" }}>
             <div style={{ marginRight: 10 }}>
-              <Button
-                sx={{
-                  bgcolor: "#053B50",
-                  ":hover": {
-                    bgcolor: "#115469",
-                  },
-                }}
+              <button
+                className="button-nav"
+                style={{ width: "120px"}}
                 onClick={() => {
                   navigate("/addcourse");
                 }}
               >
                 Add Course
-              </Button>
+              </button>
             </div>
             <div style={{ marginRight: 10 }}>
-              <Button
-                sx={{ bgcolor: "#053B50" }}
+              <button
+               className="button-nav"
+               style={{ width: "120px"}}
                 onClick={() => {
                   navigate("/courses");
                 }}
               >
                 Courses
-              </Button>
+              </button>
             </div>
             <div style={{ marginRight: 10 }}>
-              <Button
+              <button
                 variant={"contained"}
-                sx={{ bgcolor: "#053B50" }}
+                className="button-btn"
                 onClick={() => {
                   localStorage.setItem("token", null);
                    window.location ="/"
@@ -76,7 +83,7 @@ function Appbar() {
                   });
                 }}
               > Logout
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -90,46 +97,42 @@ function Appbar() {
       justifyContent: "space-between",
       padding: "10px",
       zIndex: 1,
-      overflow: "auto"
-
-  }}>
+      overflow: "auto",
+      marginLeft: '20px',
+      marginRight: '20px',
+      marginTop: "8px"
+    }} 
+    >
       <div>
-        <Typography>CourseHub</Typography>
+        <Typography
+        style={{ color: "white" ,fontFamily: 'Kaushan Script', cursor:"pointer"}}
+        onClick={() => {
+          navigate("/");
+        }}
+        variant="h5"
+      >
+        CourseHub</Typography>
       </div>
       <div style={{ display: "flex" }}>
         <div style={{ marginRight: 10 }}>
-          <Button
-            variant={"contained"}
-            sx={{
-              bgcolor: "#053B50",
-              ":hover": {
-                bgcolor: "#115469",
-              },
-            }}
+          <button
+            className="button-nav"
             onClick={() => {
               navigate("/signup");
             }}
-          >
-            {" "}
+          >     
             Signup
-          </Button>
+          </button>
         </div>
         <div>
-          <Button
-            variant={"contained"}
-            sx={{
-              bgcolor: "#053B50",
-              ":hover": {
-                bgcolor: "#115469",
-              },
-            }}
+          <button
+           className="button-nav"
             onClick={() => {
               navigate("/signin");
             }}
           >
-            {" "}
             Signin
-          </Button>
+          </button>
         </div>
       </div>
     </div>

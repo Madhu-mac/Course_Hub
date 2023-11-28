@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Skeleton, Typography } from "@mui/material";
+import { CircularProgress, Skeleton, Typography } from "@mui/material";
 import "./courseStyle.css";
 import CourseCard from "./CourseCard";
 
@@ -35,8 +35,8 @@ function PurchasedCourses() {
           flexGrow: 1,
           padding: "10px",
           borderRadius: "4px",
-          fontWeight: "bold",
-          color: "#101460",
+          fontWeight: "600",
+          color: "whitesmoke",
           textAlign: "center",
           marginTop: "70px",
         }}
@@ -45,11 +45,9 @@ function PurchasedCourses() {
       </Typography>
       <div className="all-courses">
         {isLoading ? (
-          <div style={{ display: "flex", gap: "20px" }}>
-            <Skeleton variant="rectangular" width={345} height={400} />
-            <Skeleton variant="rectangular" width={345} height={400} />
-            <Skeleton variant="rectangular" width={345} height={400} />
-          </div>
+           <div style={{ display: "flex", justifyContent: "center", marginTop: "200px" }}>
+           <CircularProgress  color="secondary"/>
+         </div>
         ) : (
           <>
             {purCourses.length > 0

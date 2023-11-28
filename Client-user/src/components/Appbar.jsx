@@ -4,9 +4,7 @@ import { userState } from "../store/atoms/user";
 // import { userEmailState } from "../store/selectors/userEmailState";
 // import { userLoggedInState } from "../store/selectors/userIsLoggedIn";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
 import { userEmailState } from "../store/selectors/userEmailState";
-import Logo from "../../public/Logo.png"
 
 
 export default function Appbar() {
@@ -91,7 +89,6 @@ export default function Appbar() {
                   navigate("/");
                 }}
               >
-                {" "}
                 Logout
               </button>
             </div>

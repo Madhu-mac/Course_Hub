@@ -49,8 +49,9 @@ function RegisterPage() {
           color: 'white'
         }}
       >
-        <Typography variant="h6">
-          Welcome to CourseHub! Signup below
+        <Typography variant="h6"
+        style={{ color: "white" ,fontFamily: "cursive", cursor:"pointer"}}>
+          Welcome to CourseHub. Signup Below..
         </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -83,7 +84,7 @@ function RegisterPage() {
           <br />
           <button
             className='button-nav'
-            variant={"contained"}
+            variant="contained"
             onClick={handleSignUp}
           >
             Sign up

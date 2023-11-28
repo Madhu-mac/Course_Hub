@@ -1,4 +1,4 @@
-import { Card, Typography, TextField, Button, Grid } from "@mui/material";
+import { Card, Typography, TextField, Button, Grid, CircularProgress, CardMedia } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -15,24 +15,27 @@ import {
 import { Loading } from "./Loading";
 
 function Course() {
-
   let { courseId } = useParams();
   const setCourse = useSetRecoilState(courseState);
   const courseLoading = useRecoilValue(isCourseLoading);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/admin/course/" + courseId, {
+      .get(`http://localhost:3000/admin/courses/${courseId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
+        // console.log(res.data)
         setCourse({ isLoading: false, course: res.data.course });
       });
   }, []);
   if (courseLoading) {
-    return <Loading />;
+    return <div>
+      <Loading /> 
+    </div>
+    
   }
 
   return (
@@ -53,52 +56,50 @@ function Course() {
 function GrayTopper() {
   const title = useRecoilValue(courseTitle);
   return (
-    <div
-      style={{
-        height: 250,
-        background: "#212121",
-        top: 0,
-        width: "100vw",
-        zIndex: 0,
-        marginBottom: -250,
-      }}
-    >
-      <div
-        style={{
-          height: 250,
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
+    
         <div>
           <Typography
-            style={{ color: "white", fontWeight: 600 }}
+            style={{ color: "white", fontWeight: 600 , margin: "20px" , marginBottom: "40px"}}
             variant="h3"
             textAlign={"center"}
           >
             {title}
           </Typography>
         </div>
-      </div>
-    </div>
+      
   );
 }
 function UpdateCard() {
   const [courseDetails, setCourse] = useRecoilState(courseState);
-
   const [title, setTitle] = useState(courseDetails.course.title);
   const [description, setDescription] = useState(
     courseDetails.course.description
   );
   const [image, setImage] = useState(courseDetails.course.imageLink);
   const [price, setPrice] = useState(courseDetails.course.price);
+  const [isMouseOver, setIsMouseOver] = useState(false);
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card variant="outlined" sx={{ maxWidth: 600, p: 4, marginTop: 20 }}>
-          <div style={{ padding: 20 }}> </div>
-          <Typography>Update course details</Typography>
+        <Card 
+          className= "cardstyle" 
+          variant="outlined" 
+          sx={{ minWidth: 600,}}
+          style={{
+          display: "flex",
+          zIndex: 1,
+          marginBottom: "40px",
+          flexDirection: "column",
+          fontFamily: "Arial, sans-serif",  
+          boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99",
+        }}
+        onMouseOver={() => setIsMouseOver(true)}
+        onMouseLeave={() => setIsMouseOver(false)}
+        >
+          <Typography variant="h6"
+          >Update course details</Typography>
+          <br></br>
           <TextField
             value={title}
             style={{ marginBottom: 10 }}
@@ -133,6 +134,8 @@ function UpdateCard() {
             label="Image link"
             variant="outlined"
           />
+           <br />
+          <br />
           <TextField
             value={price}
             style={{ marginBottom: 10 }}
@@ -143,14 +146,11 @@ function UpdateCard() {
             label="price"
             variant="outlined"
           />
-          <Button
-            sx={{
-              bgcolor: "#053B50",
-              ":hover": {
-                bgcolor: "#115469",
-              },
-            }}
-            variant={"contained"}
+          <div>
+          <button
+            className="button-nav"
+            variant="contained"
+            style={{ width: "150px"}}
             onClick={async () => {
               axios.put(
                 "http://localhost:3000/admin/courses/" +
@@ -180,8 +180,9 @@ function UpdateCard() {
             }}
           >
             Update course
-          </Button>
-         <Delcourse/>
+          </button>
+          <Delcourse />
+          </div>
         </Card>
       </div>
     </div>
@@ -192,40 +193,37 @@ function Delcourse() {
   const navigate = useNavigate();
   const [courseDetails, setCourse] = useRecoilState(courseState);
 
-  return <Button
-    sx={{
-      bgcolor: "#053B50",
-      ":hover": {
-        bgcolor: "#115469",
-      },
-    }}
-    style={{marginLeft: "10px"}}
-    variant={"contained"}
-    onClick={async () => {
-      try {
-        const response = await axios.delete(
-          "http://localhost:3000/admin/courses/" + courseDetails.course._id,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
+  return (
+    <button
+       className="button-nav"
+      style={{ marginLeft: "10px" , width: "150px"}}
+      variant={"contained"}
+      onClick={async () => {
+        try {
+          const response = await axios.delete(
+            "http://localhost:3000/admin/courses/" + courseDetails.course._id,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            }
+          );
+          if (response.status === 200) {
+            alert("Course deleted successfully");
+            navigate("/courses");
+            setCourse({ course: null, isLoading: false });
+          } else {
+            console.error("Course deletion failed");
           }
-        );
-        if (response.status === 200) {
-          alert("Course deleted successfully");
-          navigate("/courses");
-          setCourse({ course: null, isLoading: false });
-        } else {
-          console.error("Course deletion failed");
+        } catch (error) {
+          console.error("Error deleting course:", error);
         }
-      } catch (error) {
-        console.error("Error deleting course:", error);
-      }
-    }}
-  >
-    Delete Course
-  </Button>;
+      }}
+    >
+      Delete Course
+    </button>
+  );
 }
 
 function CourseCard() {
@@ -233,28 +231,22 @@ function CourseCard() {
   const imageLink = useRecoilValue(courseImage);
   const description = useRecoilValue(courseDescription);
   const price = useRecoilValue(coursePrice);
-
+  
+  // console.log(imageLink, "imagelink")
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card
-        style={{
-          margin: 10,
-          width: 300,
-          minHeight: 100,
-          borderRadius: 20,
-          marginRight: 50,
-          paddingBottom: 15,
-          zIndex: 2,
-        }}
+        className="cardstyle"
+        
       >
-        <img src={imageLink} style={{ width: 350 }}></img>
-        <div style={{ marginLeft: 10 }}>
+        <div style={{ marginLeft: 10 , zIndex: 2, }}>
           <Typography textAlign={"center"} variant="h6">
             {title}
           </Typography>
           <Typography textAlign={"center"} variant="subtitle2">
             {description}
           </Typography>
+          <img src={imageLink} style={{ width: 350 }} />
           <Typography variant="subtitle2" style={{ color: "grey" }}>
             Price
           </Typography>

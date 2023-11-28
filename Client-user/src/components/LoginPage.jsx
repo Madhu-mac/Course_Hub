@@ -78,7 +78,7 @@ function LoginPage() {
           color: "white"
         }}
       >
-        <Typography variant={"h6"}>Welcome to Coursera. Login Below</Typography>
+        <Typography variant={"h6"}>Welcome to Coursera. Signin Below..</Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Card  className= "cardstyle" 
@@ -104,7 +104,6 @@ function LoginPage() {
           />
           <br />
           <br />
-
           {isLoading ? (
             <button
               className="button-nav"

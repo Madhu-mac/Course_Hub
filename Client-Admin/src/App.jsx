@@ -10,13 +10,22 @@ import Landing from "./components/Landing";
 import { RecoilRoot, useSetRecoilState } from "recoil";
 import { userState } from "./store/atoms/user";
 import "./components/LandingPage.css";
-
+import backgroundImg from "../public/Background.svg"
 
 function App() {
   return (
     <RecoilRoot> 
       <div 
-        style={{ height: "100vh", width: "100vw", backgroundColor: "#64CCC5" }}
+        style={{
+          backgroundImage: `url(${backgroundImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          width: "100vw",
+          alignItems: "center",
+          backgroundColor: "black",
+          overflow: "hidden"
+        }}
       >
         <Router>
           <Appbar />

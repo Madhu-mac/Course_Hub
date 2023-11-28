@@ -15,24 +15,27 @@ function Signin() {
     <div>
       <div
         style={{
-          paddingTop: 100,
+          paddingTop: 150,
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
+          color: "white"
         }}
       >
-        <Typography variant="h6">
-          {" "}
-          Welcome to CourseHub! SignIn below
-        </Typography>
+         <Typography 
+             variant="h5"
+             style={{ color: "white" ,fontFamily: "cursive", cursor:"pointer"}}>
+              Welcome to CourseHub. Signin Below..
+             </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card variant="outlined" sx={{ width: 300, p: 4 }}>
+        <Card className= "cardstyle" 
+        variant="outlined">
           <TextField
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            fullWidth
+            fullWidth={true}
             label="Email"
             variant="outlined"
           />
@@ -42,21 +45,16 @@ function Signin() {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
-            fullWidth
+            fullWidth={true}
             label="Password"
             variant="outlined"
-            type={"password"}
+            type="password"
           />
           <br />
           <br />
-          <Button
-            sx={{
-              bgcolor: "#053B50",
-              ":hover": {
-                bgcolor: "#115469",
-              },
-            }}
-            variant={"contained"}
+          <button
+           className="button-nav"
+            variant="contained"
             onClick={async () => {
               const res = await axios.post(
                 "http://localhost:3000/admin/login",
@@ -81,8 +79,21 @@ function Signin() {
               navigate("/courses");
             }}
           >
-            Sign in
-          </Button>
+            Sign In
+          </button>
+          <br></br><br></br>
+          <div>
+            <h3 style={{ fontWeight: "600" }}>
+              New here? Click here to register new account.
+            </h3>
+            <br />
+            <button
+              className="button-nav"
+              onClick={() => navigate("/register")}
+            >
+              Sign Up
+            </button>
+          </div>
         </Card>
       </div>
     </div>

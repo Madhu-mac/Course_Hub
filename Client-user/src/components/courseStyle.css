@@ -22,8 +22,9 @@
 }
 .course-des {
   color: white;
-  font-weight: bold;
   font-size: 20px;
+  font-weight: 600 !important;
+  font-style: italic;
 }
 
 .text-container {

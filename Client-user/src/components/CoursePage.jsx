@@ -1,9 +1,8 @@
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Button, Card, CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Skeleton from "@mui/material/Skeleton";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import List from "@mui/material/List";
@@ -19,6 +18,8 @@ import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import "./courseStyle.css";
+
+
 
 function Courses() {
   const [course, setCourse] = useState({});
@@ -93,22 +94,13 @@ function Courses() {
       setIsLoading(false);
     }
   };
+  
 
   if (isLoading) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "200px",
-        }}
-      >
-        <Box sx={{ width: 300 }}>
-          <Skeleton />
-          <Skeleton animation="wave" />
-          <Skeleton animation={false} />
-        </Box>
-      </div>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "300px" }}>
+      <CircularProgress  color="secondary"/>
+    </div>
     );
   }
 
@@ -126,9 +118,9 @@ function Courses() {
         <div>
           <h1 className="course-title">{course?.title}</h1>
         </div>
-        <br></br>
+       
         <div>
-          <h3 className="course-des">{course?.description}</h3>
+          <p className="course-des">{course?.description}</p>
         </div>
 
         <div>
@@ -156,7 +148,7 @@ function Courses() {
               <Button
                 variant="contained"
                 style={{
-                  backgroundColor: "#101460",
+                  backgroundColor: "#1E267A",
                   padding: "10px 20px",
                   fontWeight: "700",
                   fontSize: "1rem",
@@ -175,7 +167,7 @@ function Courses() {
       <Card 
       className= "cardstyle" 
       variant="outlined"
-          sx={{ width: "350px" }}
+          sx={{ width: "300px" }}
           style={{
             backgroundColor: "#601b99",
             color: "white",

@@ -1,7 +1,119 @@
- body{
-  margin: 0px;
- }
- /* 053B50
- 176B87
- 64CCC5
- EEEEEE */
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+.appbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing-page .options {
+  display: flex;
+  gap: 20px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.page .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid #101460;
+}
+
+#email,
+#password {
+  width: 300px;
+}
+
+.input {
+  width: 600px;
+}
+
+.button {
+  width: 100px;
+}
+
+.all-courses {
+  display: flex;
+  gap: 35px;
+  margin-top: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+}
+
+.message {
+  font-weight: 500;
+  font-size: 22px;
+  text-align: center;
+  color: rgb(218, 18, 18);
+}
+
+.button-btn {
+  margin-right: 15px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px;
+  width: 120px;
+  border-radius: 90px;
+  border: 2px solid #601b99;
+  box-shadow: 0 0 20px #601b99;
+  background-image: linear-gradient(to right, black, #601b99, black);
+}
+
+.button-btn:hover {
+  cursor: pointer;
+  box-shadow: none;
+}
+.button-nav {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px;
+  width: 100px;
+  border-radius: 10px;
+  border: 1px solid #601b99;
+  background-color: black;
+}
+
+.button-nav:hover {
+  cursor: pointer;
+  color:#601b99;
+}
+.logo{
+  font-family: 'Kaushan Script', cursive !important;
+}
+
+
+.landingpic{
+  height: auto;
+  box-shadow: 0 0 50px #601b99;
+  border-radius: 80px;
+}
+.cardstyle { 
+  /* background: rgba(96,27,153, 0.3) !important;  */
+   /* background-color: rgba(255, 255, 255, 0.8) !important;   */
+    /* backdrop-filter: blur(0px);   */
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    min-width: 400px;     
+    box-shadow: 0 0 20px #601b99;
+    border-radius: 20px !important; 
+}

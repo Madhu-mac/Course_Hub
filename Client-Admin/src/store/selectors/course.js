@@ -45,10 +45,17 @@ export const courseImage = selector({
   key:'courseImageState',
   get: ({get}) =>{
     const state = get(courseState)
-    if(state.course){
-      return state.course.image;
+    if (state.course) {
+      // Assuming that the course object has an 'image' property
+      // Modify this part according to your actual data structure
+      const imageLink = state.course.image;
+
+      // Check if the image link is truthy (not undefined or null)
+      if (imageLink) {
+        return imageLink;
+      }
     }
-    return "";
+    return "image not found";
   },
 });
 
