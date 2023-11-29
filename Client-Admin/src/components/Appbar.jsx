@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material";
+import { Avatar, Button, IconButton, Tooltip, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isUserLoading } from "../store/selectors/isUserLoading";
@@ -19,6 +19,7 @@ function Appbar() {
   }
 
   if (userEmail) {
+    console.log(userEmail , "useremail")
     return (
       <div
       style={{
@@ -84,6 +85,27 @@ function Appbar() {
                 }}
               > Logout
               </button>
+            </div>
+            <div style={{ marginRight: "10px", marginTop: "-5px", marginLeft: "-5px"}}> 
+            <Tooltip
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: 'common.black',
+                  '& .MuiTooltip-arrow': {
+                    color: "purple",
+                  },
+                  fontSize: "18px",
+                  border: "2px solid #601b99",
+                  padding: "8px"
+                },
+              },
+            }}
+            style={{ padding: "7px", }} title={userEmail}>
+                <IconButton>
+                <Avatar style={{color: "purple", backgroundColor: "whitesmoke", width: "45px", height: "45px"}} src="/broken-image.jpg" />
+                </IconButton>
+              </Tooltip>
             </div>
           </div>
         </div>

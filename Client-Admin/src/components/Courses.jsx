@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -21,15 +23,19 @@ function Courses() {
         const data = response.data;
         console.log(data);
         setCourses(data.courses);
+        setIsLoading(false);
         console.log(courses);
       } catch (error) {
         console.error("Error fetching courses:", error);
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
-  return (<div><Typography
+  return (<div 
+          style={{ overflowY: "auto", height: "100vh"}}
+  ><Typography
     variant="h4"
     style={{
       padding: "10px",

@@ -5,7 +5,9 @@ import { userState } from "../store/atoms/user";
 // import { userLoggedInState } from "../store/selectors/userIsLoggedIn";
 import Typography from "@mui/material/Typography";
 import { userEmailState } from "../store/selectors/userEmailState";
-
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import Avatar from '@mui/material/Avatar'
 
 export default function Appbar() {
   // const userLoading = useRecoilValue(userLoggedInState)
@@ -32,7 +34,7 @@ export default function Appbar() {
           marginTop: "8px"
           // background: "rgba(255, 255, 255, 0.5)"
         }}
-      > 
+      >
         <div
           style={{ display:"flex", flexDirection:"row", justifyContent: "center", alignItems:"center", marginLeft: 10, cursor: "pointer"  }}
           onClick={() => {
@@ -72,7 +74,8 @@ export default function Appbar() {
                 Purchased Courses
               </button>
             </div>
-            <div style={{ marginRight: 10 }}>
+            
+            <div>
               <button
                 variant={"contained"}
                  className="button-btn"
@@ -91,6 +94,27 @@ export default function Appbar() {
               >
                 Logout
               </button>
+            </div>
+            <div style={{ marginRight: "10px", marginTop: "-5px", marginLeft: "-5px"}}> 
+            <Tooltip
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: 'common.black',
+                  '& .MuiTooltip-arrow': {
+                    color: "purple",
+                  },
+                  fontSize: "18px",
+                  border: "2px solid #601b99",
+                  padding: "8px"
+                },
+              },
+            }}
+            style={{ padding: "7px", }} title={user.Email}>
+                <IconButton>
+                <Avatar style={{color: "purple", backgroundColor: "whitesmoke", width: "45px", height: "45px"}} src="/broken-image.jpg" />
+                </IconButton>
+              </Tooltip>
             </div>
           </div>
         </div>

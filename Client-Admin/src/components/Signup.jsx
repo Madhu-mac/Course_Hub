@@ -56,23 +56,23 @@ function Signup() {
             className="button-nav"
             variant="contained"
             onClick={async () => {
-              const res = await axios.post(
-                "http://localhost:3000/admin/signup",
-                {
+              try {
+                const res = await axios.post("http://localhost:3000/admin/signup", {
                   username: email,
                   password: password,
-                }
-              );
-              const data = res.data;
+                });
 
-              localStorage.setItem("token", data.token);
-              // window.location ="/"
-              setUser({ userEmail: email, isLoading: false });
-              navigate("/courses");
+                const data = res.data;
+                localStorage.setItem("token", data.token);
+                setUser({ userEmail: email, isLoading: false });
+                navigate("/courses");
+              } catch (error) {
+                console.error("Error during signup:", error);
+              }
             }}
           >
             Sign up
-          </button>
+        </button>
           <br></br>
           <br></br>
           <div>
