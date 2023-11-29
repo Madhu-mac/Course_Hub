@@ -71,7 +71,6 @@ function Signin() {
               const data = res.data;
 
               localStorage.setItem("token", data.token);
-              window.location = "/";
               setUser({
                 userEmail: email,
                 isLoading: false,
@@ -89,7 +88,7 @@ function Signin() {
             <br />
             <button
               className="button-nav"
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/signup")}
             >
               Sign Up
             </button>

@@ -42,22 +42,20 @@ export const coursePrice = selector({
 });
 
 export const courseImage = selector({
-  key:'courseImageState',
-  get: ({get}) =>{
-    const state = get(courseState)
-    if (state.course) {
-      // Assuming that the course object has an 'image' property
-      // Modify this part according to your actual data structure
-      const imageLink = state.course.image;
+  key: 'courseImageState',
+  get: ({ get }) => {
+    const state = get(courseState);
 
-      // Check if the image link is truthy (not undefined or null)
-      if (imageLink) {
-        return imageLink;
-      }
+    if (state.course && state.course.image) {
+      // Assuming that the 'image' property is a valid URL or base64 string
+      return state.course.image;
     }
+
+    // Return a default image or handle the case where the image is not found
     return "image not found";
   },
 });
+
 
 export const courseDescription = selector({
   key:'courseDescriptionState',

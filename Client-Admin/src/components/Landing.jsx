@@ -39,7 +39,7 @@ function Landing() {
               }}
             >
               <Typography variant="h5" style={{ color: "white" }}>
-                A place where you Upskill yourself
+              A place where you streamline course management
               </Typography>
             </motion.div>
             {!userLoading && !userEmail && (
@@ -68,7 +68,7 @@ function Landing() {
                     <button
                       className="button-btn"
                       onClick={() => {
-                        navigate("/register");
+                        navigate("/signin");
                       }}
                     >
                       Sign In

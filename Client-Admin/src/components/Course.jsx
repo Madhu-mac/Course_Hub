@@ -71,13 +71,20 @@ function GrayTopper() {
 }
 function UpdateCard() {
   const [courseDetails, setCourse] = useRecoilState(courseState);
-  const [title, setTitle] = useState(courseDetails.course.title);
-  const [description, setDescription] = useState(
-    courseDetails.course.description
-  );
-  const [image, setImage] = useState(courseDetails.course.imageLink);
-  const [price, setPrice] = useState(courseDetails.course.price);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("")
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
   const [isMouseOver, setIsMouseOver] = useState(false);
+
+  useEffect(() => {
+    if (courseDetails) {
+      setTitle(courseDetails.course.title || "");
+      setDescription(courseDetails.course.description || "");
+      setImage(courseDetails.course.imageLink || "");
+      setPrice(courseDetails.course.price || "");
+    }
+  }, [courseDetails]);
 
   return (
     <div>
@@ -209,10 +216,13 @@ function Delcourse() {
               },
             }
           );
+          await Promise.all([
+            navigate("/courses"), // Redirect to the courses page
+            setCourse({ course: null, isLoading: true }),
+          ]);
+      
           if (response.status === 200) {
             alert("Course deleted successfully");
-            navigate("/courses");
-            setCourse({ course: null, isLoading: false });
           } else {
             console.error("Course deletion failed");
           }
@@ -232,7 +242,10 @@ function CourseCard() {
   const description = useRecoilValue(courseDescription);
   const price = useRecoilValue(coursePrice);
   
-  // console.log(imageLink, "imagelink")
+  // console.log('Title:', title);
+  // console.log('Image Link:', imageLink);
+  // console.log('Description:', description);
+  // console.log('Price:', price);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card
@@ -246,7 +259,8 @@ function CourseCard() {
           <Typography textAlign={"center"} variant="subtitle2">
             {description}
           </Typography>
-          <img src={imageLink} style={{ width: 350 }} />
+         
+          {/* <img src={imageLink} alt="course Image" style={{ width: 350 }} /> */}
           <Typography variant="subtitle2" style={{ color: "grey" }}>
             Price
           </Typography>
