@@ -12,14 +12,14 @@ function Courses() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/admin/courses/",
+          "https://coursehub-7s37.onrender.com/admin/courses/",
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
         );
-
+        
         const data = response.data;
         console.log(data);
         setCourses(data.courses);

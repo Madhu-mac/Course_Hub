@@ -72,19 +72,21 @@ function Appbar() {
               </button>
             </div>
             <div style={{ marginRight: 10 }}>
-              <button
-                variant={"contained"}
-                className="button-btn"
-                onClick={() => {
-                  localStorage.setItem("token", null);
-                   window.location ="/"
-                  setUser({
-                    isLoading: false,
-                    userEmail: null,
-                  });
-                }}
-              > Logout
-              </button>
+             <button
+             variant={"contained"}
+             className="button-btn"
+             onClick={() => {
+               localStorage.setItem("token", null);
+               localStorage.setItem("userEmail", null); // Clear userEmail as well
+               setUser({
+                 isLoading: false,
+                 userEmail: null,
+               });
+               navigate("/"); // Redirect to the home page or any desired route
+             }}
+           >
+             Logout
+           </button>
             </div>
             <div style={{ marginRight: "10px", marginTop: "-5px", marginLeft: "-5px"}}> 
             <Tooltip

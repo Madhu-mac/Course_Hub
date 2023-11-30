@@ -34,7 +34,7 @@ function Courses() {
         setIsLoading(true);
 
         const courseResponse = await axios.get(
-          `http://localhost:3000/users/courses/${id}`,
+          `https://coursehub-7s37.onrender.com/users/courses/${id}`,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
@@ -45,7 +45,7 @@ function Courses() {
         setCourse(courseResponse.data.course);
 
         const purchasedCoursesResponse = await axios.get(
-          "http://localhost:3000/users/purchasedCourses",
+          "https://coursehub-7s37.onrender.com/users/purchasedCourses",
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
@@ -75,7 +75,7 @@ function Courses() {
       setIsLoading(true);
 
       const response = await axios.post(
-        `http://localhost:3000/users/courses/${id}`,
+        `https://coursehub-7s37.onrender.com/users/courses/${id}`,
         {},
         {
           headers: {

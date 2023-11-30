@@ -90,7 +90,7 @@ function Addcourse() {
             onClick={async () => {
               try {
                 await axios.post(
-                  "http://localhost:3000/admin/courses",
+                  "https://coursehub-7s37.onrender.com/admin/courses",
                   {
                     title: title,
                     description: description,

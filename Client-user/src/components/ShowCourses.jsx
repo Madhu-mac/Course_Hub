@@ -19,7 +19,7 @@ function ShowCourses() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:3000/users/courses/", {
+      .get("https://coursehub-7s37.onrender.com/users/courses/", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

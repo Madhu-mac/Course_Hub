@@ -1,4 +1,4 @@
-import { Button, TextField, Card, Typography } from '@mui/material/';
+import { Button, TextField, Card, Typography, CircularProgress } from '@mui/material/';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,21 +8,21 @@ import { userState } from '../../src/store/atoms/user';
 function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Track loading state
   const navigate = useNavigate();
   const setUser = useSetRecoilState(userState);
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/users/signup", {
+      setLoading(true); // Set loading to true during signup
+
+      const res = await axios.post("https://coursehub-7s37.onrender.com/users/signup", {
         username: email,
         password: password,
       });
 
       const data = res.data;
-      localStorage.setItem("token", data.token);
-      localStorage.setItem('email', email);
-      localStorage.setItem('isLoggedIn', true);
-
+      
       // Update Recoil state with the user information
       setUser({
         Email: email,
@@ -30,11 +30,17 @@ function RegisterPage() {
         isLoggedIn: true,
       });
 
+      localStorage.setItem("token", data.token);
+      localStorage.setItem('email', email);
+      localStorage.setItem('isLoggedIn', true);
+      
       // Navigate to the courses page
       navigate("/courses");
     } catch (error) {
       console.error("Error during signup:", error);
       // Handle errors as needed
+    } finally {
+      setLoading(false); // Reset loading state after signup, whether success or error
     }
   };
 
@@ -82,13 +88,19 @@ function RegisterPage() {
           />
           <br />
           <br />
-          <button
-            className='button-nav'
-            variant="contained"
-            onClick={handleSignUp}
-          >
-            Sign up
-          </button>
+          {/* Conditionally render CircularProgress while loading */}
+          {loading ? (
+           <CircularProgress size={35} style={{ color: "black", marginLeft: "18px"}} />
+          ) : (
+            <button
+              className='button-nav'
+              variant="contained"
+              disabled={loading} // Disable button during loading
+              onClick={handleSignUp}
+            >
+              Sign up
+            </button>
+          )}
           <br></br><br></br>
           <div>
             <h3 style={{ fontWeight: "600" }}>
@@ -101,7 +113,7 @@ function RegisterPage() {
             >
               Signin
             </button>
-            </div>
+          </div>
         </Card>
       </div>
     </div>

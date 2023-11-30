@@ -21,7 +21,7 @@ function Course() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/admin/courses/${courseId}`, {
+      .get(`https://coursehub-7s37.onrender.com/admin/courses/${courseId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -160,7 +160,7 @@ function UpdateCard() {
             style={{ width: "150px"}}
             onClick={async () => {
               axios.put(
-                "http://localhost:3000/admin/courses/" +
+                "https://coursehub-7s37.onrender.com/admin/courses/" +
                   courseDetails.course._id,
                 {
                   title: title,
@@ -208,7 +208,7 @@ function Delcourse() {
       onClick={async () => {
         try {
           const response = await axios.delete(
-            "http://localhost:3000/admin/courses/" + courseDetails.course._id,
+            "https://coursehub-7s37.onrender.com/admin/courses/" + courseDetails.course._id,
             {
               headers: {
                 "Content-Type": "application/json",

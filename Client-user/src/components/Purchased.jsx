@@ -10,7 +10,7 @@ function PurchasedCourses() {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("http://localhost:3000/users/purchasedCourses", {
+    axios.get("https://coursehub-7s37.onrender.com/users/purchasedCourses", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
