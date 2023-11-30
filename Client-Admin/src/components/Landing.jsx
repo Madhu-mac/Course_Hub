@@ -24,7 +24,7 @@ function Landing() {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <Typography variant={"h2"} style={{ color: "white" }}>
+              <Typography variant={"h4"} style={{ color: "white"}} >
                 CourseHub Admin
               </Typography>
             </motion.div>
@@ -38,7 +38,7 @@ function Landing() {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <Typography variant="h5" style={{ color: "white" }}>
+              <Typography variant="h6" style={{ color: "white",fontSize:"15px"}}>
               A place where you streamline course management
               </Typography>
             </motion.div>

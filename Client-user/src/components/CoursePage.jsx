@@ -19,8 +19,6 @@ import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import "./courseStyle.css";
 
-
-
 function Courses() {
   const [course, setCourse] = useState({});
   const [purchasedCourses, setPurchasedCourses] = useState([]);
@@ -94,18 +92,23 @@ function Courses() {
       setIsLoading(false);
     }
   };
-  
 
   if (isLoading) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "300px" }}>
-      <CircularProgress  color="secondary"/>
-    </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "300px",
+        }}
+      >
+        <CircularProgress color="secondary" />
+      </div>
     );
   }
 
   return (
-    <div className="single-course">
+    <div className="single-course" >
       <div className="text-container">
         <div>
           <img
@@ -116,70 +119,75 @@ function Courses() {
           />
         </div>
         <div>
-          <h1 className="course-title">{course?.title}</h1>
+          <h5 style={{color:"white",fontSize:"25px"}}>{course?.title}</h5>
         </div>
-       
+
         <div>
-          <p className="course-des">{course?.description}</p>
+          <p style={{color:"white",fontSize:"10px",fontStyle:"italic"}}>
+            {course?.description}
+          </p>
         </div>
 
         <div>
           {!isPurchased ? (
-            <button className="button-btn"
-              style={{width: "180px"}}
+            <button
+              className="button-btn"
+              style={{ width: "180px" }}
               onClick={handleBuyNow}
             >
               BUY NOW @${course?.price}
             </button>
           ) : (
             <div>
-              <Button
+              <button
                 variant="contained"
                 style={{
                   backgroundColor: "green",
                   padding: "10px 20px",
                   fontWeight: "700",
-                  fontSize: "1rem",
+                  fontSize: "15px !important",
                   borderRadius: "50px",
+                  color:"white",
+                  borderWidth: "0px"
                 }}
               >
                 Purchased
-              </Button>
-              <Button
+              </button>
+              <button
                 variant="contained"
                 style={{
                   backgroundColor: "#1E267A",
                   padding: "10px 20px",
                   fontWeight: "700",
-                  fontSize: "1rem",
+                  fontSize: "15px !important",
                   borderRadius: "50px",
+                  color:"white",
+                  borderWidth: "0px",
                   marginLeft: "20px",
                 }}
               >
                 View Content
-              </Button>
+              </button>
             </div>
           )}
         </div>
-        
       </div>
       <div>
-      <Card 
-      className= "cardstyle" 
-      variant="outlined"
-          sx={{ width: "300px" }}
+        <Card
+          className="cardstyle"
+          variant="outlined"
+          sx={{ width: "350px", height: "440px" }}
           style={{
             backgroundColor: "#601b99",
             color: "white",
             borderRadius: "10px",
-            paddingRight: "6px",
             display: "flex",
-            padding: "8px",
+            padding: "5px",
           }}
         >
           <CardActionArea>
             <CardContent style={{ textAlign: "center" }}>
-              <Typography gutterBottom variant="h4" component="div" back>
+              <Typography gutterBottom variant="h6" component="div"  back>
                 Course Overview
               </Typography>
               <br />
@@ -188,11 +196,11 @@ function Courses() {
                   bgcolor: "background.paper",
                   color: "black",
                   borderRadius: "20px",
-                  padding: "20px 5px",
+                  padding: "5px 2px",
                 }}
               >
                 <nav aria-label="main mailbox folders">
-                  <List style={{ padding: "10px" }}>
+                  <List style={{ padding: "5px" }}>
                     <ListItem disablePadding>
                       <ListItemButton>
                         <ListItemIcon>
@@ -255,9 +263,8 @@ function Courses() {
             </CardContent>
           </CardActionArea>
         </Card>
-        </div>
-    </div> 
-   
+      </div>
+    </div>
   );
 }
 

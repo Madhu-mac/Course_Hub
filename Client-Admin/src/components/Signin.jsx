@@ -1,9 +1,16 @@
-import { Button, TextField, Card, Typography, CircularProgress } from "@mui/material/";
+import {
+  Button,
+  TextField,
+  Card,
+  Typography,
+  CircularProgress,
+} from "@mui/material/";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../store/atoms/user";
+import "../index.css";
 
 function Signin() {
   const [email, setEmail] = useState("");
@@ -46,7 +53,7 @@ function Signin() {
     <div>
       <div
         style={{
-          paddingTop: 150,
+          paddingTop: 60,
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
@@ -54,14 +61,23 @@ function Signin() {
         }}
       >
         <Typography
-          variant="h5"
-          style={{ color: "white", fontFamily: "cursive", cursor: "pointer" }}
+          variant="h6"
+          style={{
+            color: "white",
+            fontFamily: "cursive",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
         >
           Welcome to CourseHub. Signin Below..
         </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card className="cardstyle" variant="outlined">
+        <Card
+          className="cardstyle"
+          variant="outlined"
+          sx={{ width: "250px", height: "270px" }}
+        >
           <TextField
             onChange={(e) => {
               setEmail(e.target.value);
@@ -85,7 +101,10 @@ function Signin() {
           <br />
           {/* Conditionally render CircularProgress while loading */}
           {loading ? (
-           <CircularProgress size={35} style={{ color: "black", marginLeft: "18px"}} />
+            <CircularProgress
+              size={35}
+              style={{ color: "black", marginLeft: "18px" }}
+            />
           ) : (
             <button
               className="button-nav"

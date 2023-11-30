@@ -12,47 +12,55 @@ function Appbar() {
   const userEmail = useRecoilValue(userEmailState);
   const setUser = useSetRecoilState(userState);
 
-  if (userLoading) {
-    return<div>
-
-    </div>
-  }
+  // if (userLoading) {
+  //   return (
+  //     <div>
+  //       <Loading />
+  //     </div>
+  //   );
+  // }
 
   if (userEmail) {
-    console.log(userEmail , "useremail")
+    console.log(userEmail, "useremail");
     return (
       <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: 4,
-        zIndex: 1,
-        overflow: "auto",
-        marginTop: "8px"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: 4,
+          zIndex: 1,
+          marginTop: "8px",
         }}
       >
         <div
-          style={{ display:"flex", flexDirection:"row", justifyContent: "center", alignItems:"center", marginLeft: 10, cursor: "pointer"  }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: 10,
+            cursor: "pointer",
+          }}
           onClick={() => {
             navigate("/");
           }}
         >
-          <Typography 
-             style={{ color: "white" ,fontFamily: 'Kaushan Script'}}
+          <Typography
+            style={{ color: "white", fontFamily: "Kaushan Script" }}
             onClick={() => {
               navigate("/");
             }}
             variant={"h6"}
           >
             CourseHub
-          </Typography> 
+          </Typography>
         </div>
         <div style={{ display: "flex" }}>
           <div style={{ marginRight: 10, display: "flex" }}>
             <div style={{ marginRight: 10 }}>
               <button
                 className="button-nav"
-                style={{ width: "120px"}}
+                style={{ width: "100px" }}
                 onClick={() => {
                   navigate("/addcourse");
                 }}
@@ -62,8 +70,8 @@ function Appbar() {
             </div>
             <div style={{ marginRight: 10 }}>
               <button
-               className="button-nav"
-               style={{ width: "120px"}}
+                className="button-nav"
+                style={{ width: "80px" }}
                 onClick={() => {
                   navigate("/courses");
                 }}
@@ -72,40 +80,58 @@ function Appbar() {
               </button>
             </div>
             <div style={{ marginRight: 10 }}>
-             <button
-             variant={"contained"}
-             className="button-btn"
-             onClick={() => {
-               localStorage.setItem("token", null);
-               localStorage.setItem("userEmail", null); // Clear userEmail as well
-               setUser({
-                 isLoading: false,
-                 userEmail: null,
-               });
-               navigate("/"); // Redirect to the home page or any desired route
-             }}
-           >
-             Logout
-           </button>
+              <button
+                variant={"contained"}
+                className="button-btn"
+                style={{width:"90px",height:"35px"}}
+                onClick={() => {
+                  localStorage.setItem("token", null);
+                  localStorage.setItem("userEmail", null); // Clear userEmail as well
+                  setUser({
+                    isLoading: false,
+                    userEmail: null,
+                  });
+                  navigate("/"); // Redirect to the home page or any desired route
+                }}
+              >
+                Logout
+              </button>
             </div>
-            <div style={{ marginRight: "10px", marginTop: "-5px", marginLeft: "-5px"}}> 
-            <Tooltip
-            componentsProps={{
-              tooltip: {
-                sx: {
-                  bgcolor: 'common.black',
-                  '& .MuiTooltip-arrow': {
-                    color: "purple",
+            <div
+              style={{
+                marginRight: "10px",
+                marginTop: "-5px",
+                marginLeft: "-5px",
+              }}
+            >
+              <Tooltip
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      bgcolor: "common.black",
+                      "& .MuiTooltip-arrow": {
+                        color: "purple",
+                      },
+                      fontSize: "15px",
+                      border: "2px solid #601b99",
+                      padding: "5px",
+                    },
                   },
-                  fontSize: "18px",
-                  border: "2px solid #601b99",
-                  padding: "8px"
-                },
-              },
-            }}
-            style={{ padding: "7px", }} title={userEmail}>
+                }}
+                style={{ padding: "7px" }}
+                title={userEmail}
+              >
                 <IconButton>
-                <Avatar style={{color: "purple", backgroundColor: "whitesmoke", width: "45px", height: "45px"}} src="/broken-image.jpg" />
+                  <Avatar
+                    style={{
+                      color: "purple",
+                      backgroundColor: "whitesmoke",
+                      width: "35px",
+                      height: "35px",
+                      marginLeft:"-10px"
+                    }}
+                    src="/broken-image.jpg"
+                  />
                 </IconButton>
               </Tooltip>
             </div>
@@ -116,26 +142,31 @@ function Appbar() {
   }
 
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "space-between",
-      padding: "10px",
-      zIndex: 1,
-      overflow: "auto",
-      marginLeft: '20px',
-      marginRight: '20px',
-      marginTop: "8px"
-    }} 
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "10px",
+        zIndex: 1,
+        marginLeft: "20px",
+        marginRight: "20px",
+        marginTop: "8px",
+      }}
     >
       <div>
         <Typography
-        style={{ color: "white" ,fontFamily: 'Kaushan Script', cursor:"pointer"}}
-        onClick={() => {
-          navigate("/");
-        }}
-        variant="h5"
-      >
-        CourseHub</Typography>
+          style={{
+            color: "white",
+            fontFamily: "Kaushan Script",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            navigate("/");
+          }}
+          variant="h5"
+        >
+          CourseHub
+        </Typography>
       </div>
       <div style={{ display: "flex" }}>
         <div style={{ marginRight: 10 }}>
@@ -144,13 +175,13 @@ function Appbar() {
             onClick={() => {
               navigate("/signup");
             }}
-          >     
+          >
             Signup
           </button>
         </div>
         <div>
           <button
-           className="button-nav"
+            className="button-nav"
             onClick={() => {
               navigate("/signin");
             }}

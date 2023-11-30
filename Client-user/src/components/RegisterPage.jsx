@@ -1,9 +1,15 @@
-import { Button, TextField, Card, Typography, CircularProgress } from '@mui/material/';
-import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { userState } from '../../src/store/atoms/user';
+import {
+  Button,
+  TextField,
+  Card,
+  Typography,
+  CircularProgress,
+} from "@mui/material/";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { userState } from "../../src/store/atoms/user";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -16,24 +22,27 @@ function RegisterPage() {
     try {
       setLoading(true); // Set loading to true during signup
 
-      const res = await axios.post("https://coursehub-7s37.onrender.com/users/signup", {
-        username: email,
-        password: password,
-      });
+      const res = await axios.post(
+        "https://coursehub-7s37.onrender.com/users/signup",
+        {
+          username: email,
+          password: password,
+        }
+      );
 
       const data = res.data;
-      
+
       // Update Recoil state with the user information
       setUser({
         Email: email,
-        username: email.split('@')[0].toUpperCase(),
+        username: email.split("@")[0].toUpperCase(),
         isLoggedIn: true,
       });
 
       localStorage.setItem("token", data.token);
-      localStorage.setItem('email', email);
-      localStorage.setItem('isLoggedIn', true);
-      
+      localStorage.setItem("email", email);
+      localStorage.setItem("isLoggedIn", true);
+
       // Navigate to the courses page
       navigate("/courses");
     } catch (error) {
@@ -48,25 +57,33 @@ function RegisterPage() {
     <div>
       <div
         style={{
-          paddingTop: 150,
+          paddingTop: 60,
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
-          color: 'white'
+          color: "white",
         }}
       >
-        <Typography variant="h6"
-        style={{ color: "white" ,fontFamily: "cursive", cursor:"pointer"}}>
-          Welcome to CourseHub. Signup Below..
+        <Typography
+          variant="h6"
+          style={{
+            color: "white",
+            fontFamily: "cursive",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
+        >
+          Welcome to CourseHub. Signin Below..
         </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card 
-        className= "cardstyle" 
-        variant="outlined" 
-       >
+        <Card
+          className="cardstyle"
+          variant="outlined"
+          sx={{ width: "250px", height: "250px" }}
+        >
           <TextField
-          style={{ color: "white" , borderColor: "white" }}
+            style={{ color: "white", borderColor: "white" }}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -77,7 +94,6 @@ function RegisterPage() {
           <br />
           <br />
           <TextField
-          
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -90,10 +106,13 @@ function RegisterPage() {
           <br />
           {/* Conditionally render CircularProgress while loading */}
           {loading ? (
-           <CircularProgress size={35} style={{ color: "black", marginLeft: "18px"}} />
+            <CircularProgress
+              size={35}
+              style={{ color: "black", marginLeft: "18px" }}
+            />
           ) : (
             <button
-              className='button-nav'
+              className="button-nav"
               variant="contained"
               disabled={loading} // Disable button during loading
               onClick={handleSignUp}
@@ -101,16 +120,12 @@ function RegisterPage() {
               Sign up
             </button>
           )}
-          <br></br><br></br>
+          <br></br>
+          <br></br>
           <div>
-            <h3 style={{ fontWeight: "600" }}>
-             Already a user! login here..
-            </h3>
+            <h3 style={{ fontWeight: "600" }}>Already a user! login here..</h3>
             <br />
-            <button
-              className="button-nav"
-              onClick={() => navigate("/login")}
-            >
+            <button className="button-nav" onClick={() => navigate("/login")}>
               Signin
             </button>
           </div>

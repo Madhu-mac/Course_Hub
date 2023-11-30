@@ -1,5 +1,4 @@
 import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
 import { Card } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
@@ -26,7 +25,7 @@ function Addcourse() {
         <Card
           className="cardstyle"
           variant="outlined"
-          sx={{ minWidth: 350, height: 360 }}
+          sx={{ minWidth: 300, height: 330 }}
           style={{
             display: "flex",
             flex: 1,

@@ -21,10 +21,9 @@ function App() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: "100vh",
-          width: "100vw",
           alignItems: "center",
           backgroundColor: "black",
-          overflow: "hidden"
+          overflow: "auto"
         }}
       >
         <Router>
@@ -48,7 +47,7 @@ function InitUser() {
   const setUser = useSetRecoilState(userState);
   const init = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/admin/me", {
+      const response = await axios.get("https://coursehub-7s37.onrender.com/admin/me", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

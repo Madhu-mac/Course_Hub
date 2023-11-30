@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 * {
   padding: 0;
   margin: 0;
 }
 
 body {
-    overflow: hidden;
+  overflow: auto !important;
 }
+
 .appbar {
   display: flex;
   justify-content: space-between;
@@ -94,26 +95,40 @@ body {
 
 .button-nav:hover {
   cursor: pointer;
-  color:#601b99;
+  color: #601b99;
 }
-.logo{
-  font-family: 'Kaushan Script', cursive !important;
+.logo {
+  font-family: "Kaushan Script", cursive !important;
 }
 
-
-.landingpic{
+.landingpic {
   height: auto;
   box-shadow: 0 0 50px #601b99;
-  border-radius: 80px;
+  border-radius: 50px;
 }
-.cardstyle { 
+.cardstyle {
   /* background: rgba(96,27,153, 0.3) !important;  */
-   /* background-color: rgba(255, 255, 255, 0.8) !important;   */
-    /* backdrop-filter: blur(0px);   */
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-    min-width: 400px;     
-    box-shadow: 0 0 20px #601b99;
-    border-radius: 20px !important; 
+  /* background-color: rgba(255, 255, 255, 0.8) !important;   */
+  /* backdrop-filter: blur(0px);   */
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  min-width: 250px;
+  height: 250px;
+  font-size: small;
+  box-shadow: 0 0 20px #601b99;
+  border-radius: 20px !important;
+}
+@media screen and (max-width: 5000px) {
+  .button-nav {
+    width: 70px;
+    height: 35px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  .button-btn {
+    font-size: 12px;
+    padding: 10px;
+    width: 90px;
+  }
 }

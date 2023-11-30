@@ -9,8 +9,8 @@
 A comprehensive course-selling website with robust features, built on the MERN stack (Node.js, Express.js, MongoDB, and React).
 
 Explore the live application: 🚀✨
-- Admin Dashboard :-  
-- User Dashboard :-  
+- Admin Panel :-  
+- User Panel :-  
 
 # Table of Contents
 

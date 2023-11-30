@@ -19,7 +19,7 @@ function Courses() {
             },
           }
         );
-        
+
         const data = response.data;
         console.log(data);
         setCourses(data.courses);
@@ -33,28 +33,29 @@ function Courses() {
 
     fetchData();
   }, []);
-  return (<div 
-          style={{ overflowY: "auto", height: "100vh"}}
-  ><Typography
-    variant="h4"
-    style={{
-      padding: "10px",
-      borderRadius: "4px",
-      fontWeight: "bold",
-      color: "whitesmoke",
-      textAlign: "center",
-      marginTop: "70px",
-    }}
-  >
-    All Courses
-  </Typography>
-    <div
-      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-    >
-      {courses.map((course) => (
-        <Course key={course._id} course={course} />
-      ))}
-    </div>
+  return (
+    <div style={{ height: "100vh" }}>
+      <Typography
+        variant="h4"
+        style={{
+          padding: "10px",
+          borderRadius: "4px",
+          fontWeight: "bold",
+          color: "whitesmoke",
+          textAlign: "center",
+          marginTop: "70px",
+          fontSize: "25px",
+        }}
+      >
+        All Courses
+      </Typography>
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        {courses.map((course) => (
+          <Course key={course._id} course={course} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -64,28 +65,34 @@ function Course({ course }) {
   return (
     <div>
       <Card
-        className= "cardstyle" 
-        variant="outlined" 
-         sx={{ minWidth: 350, height: 360 }}
-         style={{
-           display: "flex",
-           flex: 1,
-           flexDirection: "column",
-           flexWrap: "wrap",
-           fontFamily: "Arial, sans-serif",  
-           boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99",
-           margin: "20px",
-         }}
-         onMouseOver={() => setIsMoueOver(true)}
-         onMouseLeave={() => setIsMoueOver(false)}
+        className="cardstyle"
+        variant="outlined"
+        sx={{ minWidth: 80, width: 240, height: 245 }}
+        style={{
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          padding: "13px",
+          flexWrap: "wrap",
+          fontFamily: "Arial, sans-serif",
+          boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99",
+          margin: "15px",
+        }}
+        onMouseOver={() => setIsMoueOver(true)}
+        onMouseLeave={() => setIsMoueOver(false)}
       >
         <div>
           <CardMedia
-            sx={{ height: 200, width: 350 , minWidth: "100%" , borderRadius: "20px"}}
+            sx={{
+              height: 120,
+              width: 80,
+              minWidth: "100%",
+              borderRadius: "20px",
+            }}
             image={course.imageLink}
             title={course.title}
           />
-       <CardContent
+          <CardContent
             style={{
               display: "flex",
               flexDirection: "column",
@@ -94,9 +101,10 @@ function Course({ course }) {
           >
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               style={{
+                fontSize: "18px",
                 fontWeight: "700",
                 color: isMouseOver && "#601b99",
                 overflow: "hidden",
@@ -110,10 +118,11 @@ function Course({ course }) {
             </Typography>
             <Typography
               gutterBottom
-              variant="h8"
+              variant="p"
               component="div"
               style={{
                 fontWeight: "50",
+                fontSize: "12px",
                 fontFamily: "inherit",
                 display: "-webkit-box",
                 WebkitLineClamp: 1,
@@ -126,18 +135,18 @@ function Course({ course }) {
               {course.description}
             </Typography>
             <br></br>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button
-            className="button-btn"
-            style={{ boxShadow: "none" }}
-            onClick={() => {
-              navigate("/course/" + course._id);
-            }}
-          >
-            Edit
-          </button>
-        </div>
-        </CardContent>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                className="button-btn"
+                style={{ boxShadow: "none" }}
+                onClick={() => {
+                  navigate("/course/" + course._id);
+                }}
+              >
+                Edit
+              </button>
+            </div>
+          </CardContent>
         </div>
       </Card>
     </div>

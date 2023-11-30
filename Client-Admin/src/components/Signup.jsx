@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../store/atoms/user";
 
+
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +38,7 @@ function Signup() {
     <div>
       <div
         style={{
-          paddingTop: 150,
+          paddingTop: 60,
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
@@ -45,8 +46,8 @@ function Signup() {
         }}
       >
         <Typography
-          variant="h5"
-          style={{ color: "white", fontFamily: "cursive", cursor: "pointer" }}
+          variant="h6"
+          style={{ color: "white", fontFamily: "cursive", cursor: "pointer",fontSize:"16px" }}
         >
           Welcome to CourseHub. Signup Below..
         </Typography>

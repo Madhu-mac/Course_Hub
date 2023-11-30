@@ -11,16 +11,16 @@ function CourseCard(props) {
   const [isMouseOver, setIsMoueOver] = useState(false);
   return (
     <div>
-      <Card 
-       className= "cardstyle" 
-       variant="outlined" 
-        sx={{ minWidth: 350, height: 360 }}
+      <Card
+        className="cardstyle"
+        variant="outlined"
+        sx={{ minWidth: 80, width: 240, height: 245 }}
         style={{
           display: "flex",
           flex: 1,
           flexDirection: "column",
-          fontFamily: "Arial, sans-serif",  
-          boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99"
+          fontFamily: "Arial, sans-serif",
+          boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99",
         }}
         onMouseOver={() => setIsMoueOver(true)}
         onMouseLeave={() => setIsMoueOver(false)}
@@ -30,7 +30,12 @@ function CourseCard(props) {
       >
         <div>
           <CardMedia
-            sx={{ height: 200, width: 350 , minWidth: "100%" , borderRadius: "20px"}}
+            sx={{
+              height: 120,
+              width: 80,
+              minWidth: "100%",
+              borderRadius: "20px",
+            }}
             image={props.course.imageLink}
             title={props.course.title}
           />
@@ -43,9 +48,10 @@ function CourseCard(props) {
           >
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               style={{
+                fontSize: "18px",
                 fontWeight: "700",
                 color: isMouseOver && "#601b99",
                 overflow: "hidden",
@@ -59,12 +65,13 @@ function CourseCard(props) {
             </Typography>
             <Typography
               gutterBottom
-              variant="h8"
+              variant="p"
               component="div"
               style={{
                 fontWeight: "50",
                 fontFamily: "inherit",
                 display: "-webkit-box",
+                fontSize: "12px",
                 WebkitLineClamp: 1,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
@@ -79,7 +86,11 @@ function CourseCard(props) {
               gutterBottom
               variant="h6"
               component="div"
-              style={{ fontWeight: "900",  color: isMouseOver && "#601b99"}}
+              style={{
+                fontWeight: "900",
+                color: isMouseOver && "#601b99",
+                fontSize: "15px",
+              }}
             >
               ${props.course.price}
             </Typography>

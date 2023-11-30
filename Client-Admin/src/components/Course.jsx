@@ -1,4 +1,12 @@
-import { Card, Typography, TextField, Button, Grid, CircularProgress, CardMedia } from "@mui/material";
+import {
+  Card,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  CircularProgress,
+  CardMedia,
+} from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -32,10 +40,11 @@ function Course() {
       });
   }, []);
   if (courseLoading) {
-    return <div>
-      <Loading /> 
-    </div>
-    
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   return (
@@ -56,23 +65,26 @@ function Course() {
 function GrayTopper() {
   const title = useRecoilValue(courseTitle);
   return (
-    
-        <div>
-          <Typography
-            style={{ color: "white", fontWeight: 600 , margin: "20px" , marginBottom: "40px"}}
-            variant="h3"
-            textAlign={"center"}
-          >
-            {title}
-          </Typography>
-        </div>
-      
+    <div>
+      <Typography
+        style={{
+          color: "white",
+          fontWeight: 600,
+          margin: "20px",
+          marginBottom: "40px",
+        }}
+        variant="h4"
+        textAlign={"center"}
+      >
+        {title}
+      </Typography>
+    </div>
   );
 }
 function UpdateCard() {
   const [courseDetails, setCourse] = useRecoilState(courseState);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("")
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -88,24 +100,23 @@ function UpdateCard() {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card 
-          className= "cardstyle" 
-          variant="outlined" 
-          sx={{ minWidth: 600,}}
+      <div className="card-div">
+        <Card
+          className="cardstyle"
+          variant="outlined"
+          sx={{ minWidth: 350, minHeight: 385 }}
           style={{
-          display: "flex",
-          zIndex: 1,
-          marginBottom: "40px",
-          flexDirection: "column",
-          fontFamily: "Arial, sans-serif",  
-          boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99",
-        }}
-        onMouseOver={() => setIsMouseOver(true)}
-        onMouseLeave={() => setIsMouseOver(false)}
+            display: "flex",
+            zIndex: 1,
+            marginBottom: "40px",
+            flexDirection: "column",
+            fontFamily: "Arial, sans-serif",
+            boxShadow: isMouseOver ? "0 0 50px #601b99" : "0 0 10px #601b99",
+          }}
+          onMouseOver={() => setIsMouseOver(true)}
+          onMouseLeave={() => setIsMouseOver(false)}
         >
-          <Typography variant="h6"
-          >Update course details</Typography>
+          <Typography variant="h6" sx={{fontSize:"18px"}}>Update course details</Typography>
           <br></br>
           <TextField
             value={title}
@@ -118,7 +129,7 @@ function UpdateCard() {
             variant="outlined"
           />
           <br />
-          <br />
+
           <TextField
             value={description}
             style={{ marginBottom: 10 }}
@@ -130,7 +141,7 @@ function UpdateCard() {
             variant="outlined"
           />
           <br />
-          <br />
+
           <TextField
             value={image}
             style={{ marginBottom: 10 }}
@@ -141,8 +152,8 @@ function UpdateCard() {
             label="Image link"
             variant="outlined"
           />
-           <br />
           <br />
+
           <TextField
             value={price}
             style={{ marginBottom: 10 }}
@@ -154,41 +165,41 @@ function UpdateCard() {
             variant="outlined"
           />
           <div>
-          <button
-            className="button-nav"
-            variant="contained"
-            style={{ width: "150px"}}
-            onClick={async () => {
-              axios.put(
-                "https://coursehub-7s37.onrender.com/admin/courses/" +
-                  courseDetails.course._id,
-                {
+            <button
+              className="button-nav"
+              variant="contained"
+              style={{ width: "150px" }}
+              onClick={async () => {
+                axios.put(
+                  "https://coursehub-7s37.onrender.com/admin/courses/" +
+                    courseDetails.course._id,
+                  {
+                    title: title,
+                    description: description,
+                    imageLink: image,
+                    published: true,
+                    price,
+                  },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: "Bearer " + localStorage.getItem("token"),
+                    },
+                  }
+                );
+                let updatedCourse = {
+                  _id: courseDetails.course._id,
                   title: title,
                   description: description,
                   imageLink: image,
-                  published: true,
                   price,
-                },
-                {
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + localStorage.getItem("token"),
-                  },
-                }
-              );
-              let updatedCourse = {
-                _id: courseDetails.course._id,
-                title: title,
-                description: description,
-                imageLink: image,
-                price,
-              };
-              setCourse({ course: updatedCourse, isLoading: false });
-            }}
-          >
-            Update course
-          </button>
-          <Delcourse />
+                };
+                setCourse({ course: updatedCourse, isLoading: false });
+              }}
+            >
+              Update course
+            </button>
+            <Delcourse />
           </div>
         </Card>
       </div>
@@ -202,13 +213,14 @@ function Delcourse() {
 
   return (
     <button
-       className="button-nav"
-      style={{ marginLeft: "10px" , width: "150px"}}
+      className="button-nav"
+      style={{ marginLeft: "10px", width: "150px" }}
       variant={"contained"}
       onClick={async () => {
         try {
           const response = await axios.delete(
-            "https://coursehub-7s37.onrender.com/admin/courses/" + courseDetails.course._id,
+            "https://coursehub-7s37.onrender.com/admin/courses/" +
+              courseDetails.course._id,
             {
               headers: {
                 "Content-Type": "application/json",
@@ -220,7 +232,7 @@ function Delcourse() {
             navigate("/courses"), // Redirect to the courses page
             setCourse({ course: null, isLoading: true }),
           ]);
-      
+
           if (response.status === 200) {
             alert("Course deleted successfully");
           } else {
@@ -241,25 +253,22 @@ function CourseCard() {
   const imageLink = useRecoilValue(courseImage);
   const description = useRecoilValue(courseDescription);
   const price = useRecoilValue(coursePrice);
-  
+
   // console.log('Title:', title);
   // console.log('Image Link:', imageLink);
   // console.log('Description:', description);
   // console.log('Price:', price);
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Card
-        className="cardstyle"
-        
-      >
-        <div style={{ marginLeft: 10 , zIndex: 2, }}>
+    <div style={{ display: "flex" ,marginLeft:"-80px"}}>
+      <Card className="cardstyle" sx={{height:"100px"}}>
+        <div style={{ marginLeft: 10, zIndex: 2 }}>
           <Typography textAlign={"center"} variant="h6">
             {title}
           </Typography>
           <Typography textAlign={"center"} variant="subtitle2">
             {description}
           </Typography>
-         
+
           {/* <img src={imageLink} alt="course Image" style={{ width: 350 }} /> */}
           <Typography variant="subtitle2" style={{ color: "grey" }}>
             Price

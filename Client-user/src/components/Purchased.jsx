@@ -54,7 +54,7 @@ function PurchasedCourses() {
               ? purCourses.map((course) => (
                   <CourseCard key={course._id} course={course} />
                 ))
-              : "No course has yet been bought!"}
+              : <h2 style={{color:"white"}}>No course has yet been bought!</h2>}
           </>
         )}
       </div>

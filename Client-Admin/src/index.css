@@ -5,7 +5,8 @@
 }
 
 body {
-    overflow: hidden;
+  overflow: auto;
+  width: auto;
 }
 .appbar {
   display: flex;
@@ -92,6 +93,7 @@ body {
   background-color: black;
 }
 
+
 .button-nav:hover {
   cursor: pointer;
   color:#601b99;
@@ -104,7 +106,7 @@ body {
 .landingpic{
   height: auto;
   box-shadow: 0 0 50px #601b99;
-  border-radius: 80px;
+  border-radius: 60px;
 }
 .cardstyle { 
   /* background: rgba(96,27,153, 0.3) !important;  */
@@ -113,7 +115,35 @@ body {
     border-radius: 10px;
     padding: 20px;
     position: relative;
-    min-width: 400px;     
+    min-width: 250px;   
+    height: 250px ;
+    font-size: small;  
     box-shadow: 0 0 20px #601b99;
     border-radius: 20px !important; 
+}
+.card-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* large devices */
+@media screen and (max-width: 5000px) {
+  .button-nav {
+    width: 70px;
+    height: 35px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  .button-btn{
+    font-size: 12px ;
+    padding: 10px ;
+    width: 90px ;
+  }
+  .card-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

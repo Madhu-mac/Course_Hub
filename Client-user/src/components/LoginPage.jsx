@@ -26,10 +26,13 @@ function LoginPage() {
     try {
       setIsLoading(true); // Set loading to true before making the request
 
-      const res = await axios.post("https://coursehub-7s37.onrender.com/users/login", {
-        username: user.email,
-        password: user.password,
-      });
+      const res = await axios.post(
+        "https://coursehub-7s37.onrender.com/users/login",
+        {
+          username: user.email,
+          password: user.password,
+        }
+      );
 
       // Update Recoil state atomically
       set(userState, (prev) => ({
@@ -73,21 +76,31 @@ function LoginPage() {
     <div>
       <div
         style={{
-          paddingTop: 150,
+          paddingTop: 60,
           marginBottom: 10,
           display: "flex",
           justifyContent: "center",
-          color: "white"
+          color: "white",
         }}
       >
-        <Typography variant="h6"
-        style={{ color: "white" ,fontFamily: "cursive", cursor:"pointer"}}>
+        <Typography
+          variant="h6"
+          style={{
+            color: "white",
+            fontFamily: "cursive",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
+        >
           Welcome to CourseHub. Signin Below..
         </Typography>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card  className= "cardstyle" 
-        variant="outlined"  >
+        <Card
+          className="cardstyle"
+          variant="outlined"
+          sx={{ width: "250px", height: "270px" }}
+        >
           <TextField
             onChange={(e) =>
               setUser((prev) => ({ ...prev, email: e.target.value }))
@@ -109,15 +122,23 @@ function LoginPage() {
           />
           <br />
           <br />
-          {isLoading ? <CircularProgress size={35} style={{ color: "black", marginLeft: "18px"}} /> :   <button
-            className="button-nav"
-            onClick={handleLogin}
-            disabled={isLoading} // Disable button while loading
-            variant="contained"
-          >
-            Signin
-          </button> }
-          <br></br><br></br>
+          {isLoading ? (
+            <CircularProgress
+              size={35}
+              style={{ color: "black", marginLeft: "18px" }}
+            />
+          ) : (
+            <button
+              className="button-nav"
+              onClick={handleLogin}
+              disabled={isLoading} // Disable button while loading
+              variant="contained"
+            >
+              Signin
+            </button>
+          )}
+          <br></br>
+          <br></br>
           <div>
             <h3 style={{ fontWeight: "600" }}>
               New here? Click here to register a new account.

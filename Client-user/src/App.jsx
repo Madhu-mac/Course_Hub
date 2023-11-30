@@ -21,7 +21,7 @@ function App() {
           width: "100vw",
           alignItems: "center",
           backgroundColor: "black",
-          overflow: "hidden"
+          overflow: "auto",
         }}
       >
     <Router>
