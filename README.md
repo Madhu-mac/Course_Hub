@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/Madhu-mac/Course_Hub/assets/99901964/rounded-image.png" alt="CourseHub" width="100%">
+  <img src="https://github.com/Madhu-mac/Course_Hub/blob/main/Client-user/src/assets/CourseHub.png" alt="CourseHub" width="100%">
 </div>
  
 <div align="center">
@@ -9,8 +9,8 @@
 A comprehensive course-selling website with robust features, built on the MERN stack (Node.js, Express.js, MongoDB, and React).
 
 Explore the live application: 🚀✨
-- Admin Panel :-  
-- User Panel :-  
+- Admin Panel :-  https://coursehub-admin.netlify.app/
+- User Panel :-  https://coursehub-user.netlify.app/
 
 # Table of Contents
 
