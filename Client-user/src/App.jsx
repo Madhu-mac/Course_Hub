@@ -8,7 +8,7 @@ import ShowCourses from './components/ShowCourses';
 import Courses from './components/CoursePage';
 import PurchasedCourses from './components/Purchased';
 import Appbar from './components/Appbar';
-import backgroundImg from "../src/assets/Background.svg"
+import backgroundImg from "/Background.svg"
 function App() {
   return (
     <RecoilRoot>
