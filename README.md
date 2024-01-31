@@ -10,7 +10,17 @@ A comprehensive course-selling website with robust features, built on the MERN s
 
 Explore the live application: 🚀✨
 - Admin Panel :-  https://coursehub-admin.netlify.app/
+  
+
+https://github.com/Madhu-mac/Course_Hub/assets/99901964/7b26febd-de7d-4a68-9017-6a2902088478
+
+
 - User Panel :-  https://coursehub-user.netlify.app/
+  
+
+https://github.com/Madhu-mac/Course_Hub/assets/99901964/a6270f05-deae-4d58-b9a8-a550fad1a7b4
+
+- CourseHub Backend :- https://coursehub-7s37.onrender.com
 
 # Table of Contents
 
